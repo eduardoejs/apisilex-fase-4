@@ -17,8 +17,13 @@ http://127.0.0.1:8080/fixtures.php
 >3. *Para acessar as API REST *
 
 > LISTAR (requisição GET): <span style="">http://127.0.0.1:8080/api/produtos/</span>
+
 > LISTAR POR ID (requisição GET): <span style="">http://127.0.0.1:8080/api/produtos/1</span>
+
 > INSERIR (requisição POST): <span style="">http://127.0.0.1:8080/api/produtos/</span>
+
 > ALTERAR (requisição PUT): <span style="">http://127.0.0.1:8080/api/produtos/1</span>
+
 > DELETAR (requisição DELETE): <span style="">http://127.0.0.1:8080/api/produtos/1</span>
+
 
