@@ -32,7 +32,7 @@ try{
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `nome` longtext COLLATE utf8_unicode_ci NOT NULL,
           `descricao` longtext COLLATE utf8_unicode_ci NOT NULL,
-          `valor` longtext COLLATE utf8_unicode_ci NOT NULL,
+          `valor` decimal(5,2) COLLATE utf8_unicode_ci NOT NULL,
           PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
     $pdo->exec($comando);

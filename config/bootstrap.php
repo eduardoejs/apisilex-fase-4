@@ -11,7 +11,7 @@ $app['debug'] = true;//habilita debug mode
 
 //registrando o twig
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/../views'
+    'twig.path' => __DIR__.'/../src/EJS/views'
 ));
 
 //registrando o URL Generator
