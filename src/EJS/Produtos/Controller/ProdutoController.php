@@ -23,7 +23,7 @@ class ProdutoController implements ControllerProviderInterface {
         $app->get("/api/produtos", function() use($app){
            $dados = $app['produtoService']->listProdutos();
             return $app->json($dados);
-        });
+        })->bind('API-ListProdutos');
 
         //API para listar 1 registro apenas
         $app->get("/api/produtos/{id}", function($id) use($app){
