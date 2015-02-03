@@ -41,11 +41,8 @@ class ProdutoController implements ControllerProviderInterface {
             $dados['descricao'] = $request->get('descricao');
             $dados['valor'] = $request->get('valor');
 
-            if($app['produtoService']->insertProduto($dados)){
-                return $app->json(['SUCCESSO' => 'Registro cadastrado com sucesso']);
-            }else{
-                return $app->json(['ERRO' => 'Não foi possível cadastrar o registro']);
-            }
+            $result = $app['produtoService']->insertProduto($dados);
+            return $app->json($result);
         });
 
         //API para alterar um registro
@@ -59,11 +56,8 @@ class ProdutoController implements ControllerProviderInterface {
             $dados = $app['produtoService']->listProdutoById($id);
 
             if($dados){
-                if($app['produtoService']->alterarProduto($data)){
-                    return $app->json(['SUCCESSO' => 'Registro alterado com sucesso']);
-                }else{
-                    return $app->json(['ERRO' => 'Não foi possível alterar o registro']);
-                }
+                $result = $app['produtoService']->alterarProduto($data);
+                    return $app->json($result);
             }else{
                 return $app->json(['ERRO' => 'Registro não encontrado']);
             }
@@ -117,11 +111,8 @@ class ProdutoController implements ControllerProviderInterface {
             $produto->setNome($data['nome']);
             $produto->setValor($data['valor']);
 
-            if($app['produtoService']->insertProduto($data)){
-                return $app->redirect($app['url_generator']->generate('index'));
-            }else{
-                $app->abort(500, "Erro ao cadastrar produto");
-            }
+            $result = $app['produtoService']->insertProduto($data);
+            return $app['twig']->render('status_insert.twig', ['status' => $result]);
         })->bind('inserir');
 
         //Rota: mensagem de sucesso ao inserir novo registro [utilizar no metodo redirect->generate]
@@ -147,12 +138,10 @@ class ProdutoController implements ControllerProviderInterface {
             $produto->setNome($data['nome']);
             $produto->setDescricao($data['descricao']);
             $produto->setValor($data['valor']);
+            $produto->setId($data['id']);
 
-            if($app['produtoService']->alterarProduto($data)){
-                return $app->redirect($app['url_generator']->generate('index'));
-            }else{
-                $app->abort(500, "Erro ao alterar produto");
-            }
+            $result = $app['produtoService']->alterarProduto($data);
+            return $app['twig']->render('status_update.twig', ['status' => $result, 'produto' => $produto]);
         })->bind('update');
 
         //Rota para excluir registro

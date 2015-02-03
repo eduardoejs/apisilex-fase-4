@@ -40,9 +40,9 @@ try{
 
     //Preenchendo a tabela com dados
     $comando = "INSERT INTO `produtos` (`id`, `nome`, `descricao`, `valor`) VALUES
-    (1, 'Caneta', 'Caneta Bic', '1,50'),
-    (2, 'Lapis', 'Lapis de Cor', '3,90'),
-    (3, 'Borracha', 'Borracha Branca', '1,00');";
+    (1, 'Caneta', 'Caneta Bic', '1.50'),
+    (2, 'Lapis', 'Lapis de Cor', '3.90'),
+    (3, 'Borracha', 'Borracha Branca', '1.00');";
     $pdo->exec($comando);
 
     print("Tabela [{$tabela}] preenchida com dados<br/>");
